@@ -19,12 +19,17 @@ class App extends Component {
     showPersons: false
   }
 
+  toggleHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({ showPersons: !doesShow });
+  }
+
   render () {
     return (
       <div className="App">
         <h1>Hi I'm a React app</h1>
         <p>This Really working</p>
-        <button>Toggle Person</button>
+        <button onClick={this.toggleHandler}>Toggle Person</button>
         <Person />
       </div>
     )
