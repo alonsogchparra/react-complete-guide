@@ -25,12 +25,28 @@ class App extends Component {
   }
 
   render () {
+
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          {this.state.persons.map(person => {
+            return <Person
+                        name={person.name}
+                        age={person.age}
+                        key={person.id} />
+          })}
+        </div>
+      )
+    }
+
     return (
       <div className="App">
         <h1>Hi I'm a React app</h1>
         <p>This Really working</p>
         <button onClick={this.toggleHandler}>Toggle Person</button>
-        <Person />
+        {persons}
       </div>
     )
   }
