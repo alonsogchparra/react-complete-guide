@@ -49,6 +49,14 @@ class App extends Component {
 
   render () {
 
+    const style = {
+      backgroundColor: 'white',
+      border: '1px solid blue',
+      padding: '15px',
+      font:'inherit',
+      cursor: 'pointer'
+    }
+
     let persons = null;
 
     if (this.state.showPersons) {
@@ -70,7 +78,7 @@ class App extends Component {
       <div className="App">
         <h1>Hi I'm a React app</h1>
         <p>This Really working</p>
-        <button onClick={this.toggleHandler}>Toggle Person</button>
+        <button style={style} onClick={this.toggleHandler}>Toggle Person</button>
         {persons}
       </div>
     )
