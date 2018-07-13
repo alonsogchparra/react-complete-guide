@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
-
-import './App.css';
+import classes from './App.css';
 
 class App extends Component {
 
@@ -17,18 +16,18 @@ class App extends Component {
     ],
     otherState: 'Something',
     showPersons: false
-  }
+  };
 
   toggleHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
-  }
+  };
 
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({ persons }); 
-  }
+  };
 
   changePersonNameHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
@@ -45,19 +44,13 @@ class App extends Component {
     persons[personIndex] = person;
 
     this.setState({ persons });
-  }
+  };
 
   render () {
 
-    const style = {
-      backgroundColor: 'white',
-      border: '1px solid blue',
-      padding: '15px',
-      font:'inherit',
-      cursor: 'pointer'
-    }
 
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -71,14 +64,25 @@ class App extends Component {
                         changed={(event) => this.changePersonNameHandler(event, person.id)} />
           })}
         </div>
-      )
+      );
+      btnClass = classes.Red;
+    }
+
+    const assignedClasses = [];
+
+    if (this.state.persons.length <= 2) {
+      assignedClasses.push(classes.red);
+    }
+
+    if (this.state.persons.length <= 1) {
+      assignedClasses.push(classes.bold);
     }
 
     return (
-      <div className="App">
-        <h1>Hi I'm a React app</h1>
-        <p>This Really working</p>
-        <button style={style} onClick={this.toggleHandler}>Toggle Person</button>
+      <div className={classes.App}>
+        <h1>Hi I'm a React App</h1>
+        <p className={assignedClasses.join(' ')}>This Really working</p>
+        <button className={btnClass} onClick={this.toggleHandler}>Toggle Person</button>
         {persons}
       </div>
     )
