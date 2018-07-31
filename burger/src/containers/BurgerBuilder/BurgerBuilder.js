@@ -30,6 +30,34 @@ class BurgerBuilder extends Component {
     totalPrice: 4
   }
 
+  updatePurchaseState (ingredients) {
+    const sum = Object.keys(ingredients)
+      .map(igKey => {
+        return ingredients[igKey];
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0);
+      this.setState({ totalPrice: sum > 0 })
+  }
+
+  addIngredientHandler = (type) => {
+    const oldCount = this.state.ingredients[type];
+    const updateCount = oldCount + 1;
+    const updateIngredients = {
+      ...this.state.ingredients
+    };
+    updateIngredients[type] = updateCount;
+    const priceAddition = INGREDIENTS_PRICES[type];
+    const oldPrice = this.state.totalPrice;
+    const newPrice = oldPrice + priceAddition;
+    this.setState({
+      ingredients: updateIngredients,
+      totalPrice: newPrice
+    });
+
+    this.updatePurchaseState(updateIngredients);
+  }
 
   render () {
     return (
@@ -37,8 +65,10 @@ class BurgerBuilder extends Component {
         <div>Modal
           <div>OrderSummary</div>
         </div>
-        <Burger />
-        <BuildControls />
+        <Burger
+          ingredients={this.state.ingredients} />
+        <BuildControls
+          ingredientAdded={this.addIngredientHandler} />
       </Aux>
     );
   }
