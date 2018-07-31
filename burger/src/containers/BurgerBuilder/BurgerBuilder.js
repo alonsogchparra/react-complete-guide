@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Aux from '../../hoc/Aux/Aux';
 import BuildControls from '../../components/BuildControls/BuildControls';
+import Burger from '../../components/Burger/Burger';
 
 const INGREDIENTS_PRICES = {
   salad: 0.5,
@@ -36,7 +37,7 @@ class BurgerBuilder extends Component {
         <div>Modal
           <div>OrderSummary</div>
         </div>
-        <div>Burger</div>
+        <Burger />
         <BuildControls />
       </Aux>
     );
