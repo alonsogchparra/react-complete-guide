@@ -1,4 +1,4 @@
-#Burger Builder
+## Burger Builder
 
 This part of the tutorial is building a project to understand better the basics and more complex element that we could work with React.
 
