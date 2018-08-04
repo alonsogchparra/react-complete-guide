@@ -1,6 +1,6 @@
 # Posts - http - ajax - Axios - JsonPlaceholder
 
-This is a project to understand how works axios with react.
+This is a project to understand how works axios with react. The fetch data that we use on this project is from [JsonPlaceHolder](https://jsonplaceholder.typicode.com/).
 
 The project is divided in three parts:
 
