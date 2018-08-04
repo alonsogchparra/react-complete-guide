@@ -31,16 +31,22 @@ class Blog extends Component {
       });
   }
 
+  postSelectedHandler = (id) => {
+    this.setState({ postSelected: id });
+    console.log(id);
+  }
+
   render () {
 
-    let posts = <p>Something is wrong!</p>;
+    let posts = <p style={{textAlign: 'center'}}>Something is wrong!</p>;
 
     if (!this.state.error) {
       posts = this.state.posts.map(post => {
         return <Post
                   key={post.id} 
                   title={post.title}
-                  author={post.author} />
+                  author={post.author}
+                  clicked={() => this.postSelectedHandler(post.id)} />
       });
   
     }
@@ -51,7 +57,7 @@ class Blog extends Component {
           {posts}
         </section>
         <section>
-          <FullPost />
+          <FullPost id={this.state.postSelected} />
         </section>
         <section>
           <NewPost />
