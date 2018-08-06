@@ -10,6 +10,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
       error: null
     };
 
+    // The best way to fetch data is using componentWillMount
     componentWillMount() {
       this.reqInterceptor = axios.interceptors.request.use(req => {
         this.setState({ error: null });
@@ -19,7 +20,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
         this.setState({ error: error });
       });
     }
-
+    
     componentWillUnmount() {
       console.log('Will Unmont', this.reqInterceptor, this.resInterceptor);
       axios.interceptors.request.eject(this.reqInterceptor);
