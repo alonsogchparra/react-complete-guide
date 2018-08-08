@@ -15,28 +15,6 @@ class Blog extends Component {
     error: false
   };
 
-  componentDidMount() {
-    axios.get('/posts')
-      .then(response => {
-        const posts = response.data.slice(0,4);
-        const updatedPosts = posts.map(post => {
-          return {
-            ...post,
-            author: 'Max'
-          }
-        })
-        this.setState({posts: updatedPosts});
-      })
-      .catch(error => {
-        this.setState({ error: true });
-      });
-  }
-
-  postSelectedHandler = (id) => {
-    this.setState({ postSelected: id });
-    console.log(id);
-  }
-
   render () {
 
     let posts = <p style={{textAlign: 'center'}}>Something is wrong!</p>;
@@ -56,12 +34,6 @@ class Blog extends Component {
       <div>
         <section className="Posts">
           {posts}
-        </section>
-        <section>
-          <FullPost id={this.state.postSelected} />
-        </section>
-        <section>
-          <NewPost />
         </section>
       </div>
     )
