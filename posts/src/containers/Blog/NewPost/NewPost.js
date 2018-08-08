@@ -36,19 +36,19 @@ class NewPost extends Component {
 
   render () {
 
-    let redierct = null;
+    let redirect = null;
 
     if (this.state.submitted) {
-      redierct = <Redirect to="/posts" />
+      redirect = <Redirect to="/posts" />
     }
 
     return (
       <div className="NewPost">
-        {redierct}
+        {redirect}
         <h1>Add a Post</h1>
         <label>Title</label>
         <input 
-          input="text" 
+          type="text" 
           value={this.state.title} 
           onChange={(event) => this.setState({ title: event.target.value })} />
         <label>Content</label>
@@ -58,8 +58,8 @@ class NewPost extends Component {
           onChange={(event) => this.setState({ content: this.setState({ content: event.target.value })})} />
         <label>Author</label>
         <select value={this.state.author} onChange={(event) => this.setState({ author: event.target.value })}>
-          <option>Max</option>
-          <option>Manu</option>
+          <option value="Max">Max</option>
+          <option value="Manu">Manu</option>
         </select>
         <button onClick={this.postDataHandler}>Add Post</button>
       </div>

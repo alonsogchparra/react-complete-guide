@@ -52,7 +52,7 @@ class Blog extends Component {
           {/* <Route path="/" component={Posts} /> */}
         </Switch>
       </div>
-    )
+    );
   }
 }
 
