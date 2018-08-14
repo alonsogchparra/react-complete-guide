@@ -31,7 +31,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
       this.setState({ error: null });
     }
 
-    render() {
+    render () {
       return (
         <Aux>
           <Modal

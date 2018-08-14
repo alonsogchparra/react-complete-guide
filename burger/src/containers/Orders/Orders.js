@@ -22,10 +22,10 @@ class Orders extends Component {
           });
           console.log(res.data[key]);
         }
-        this.setState({ loading:false, orders: fetchedOrders});
+        this.setState({ loading: false, orders: fetchedOrders });
       })
       .catch(error => {
-        this.setState({ loading:false });
+        this.setState({ loading: false });
       })
   }
 
