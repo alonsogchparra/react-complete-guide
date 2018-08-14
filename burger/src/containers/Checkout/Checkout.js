@@ -16,7 +16,7 @@ class Checkout extends Component {
     const query = new URLSearchParams(this.props.location.search);
     const ingredients = {};
     let price = 0;
-    for (let param in query.entries()) {
+    for (let param of query.entries()) {
       // ['salad', '1']
       if (param[0] === 'price') {
         price = param[1];
@@ -29,11 +29,11 @@ class Checkout extends Component {
 
   checkoutCancelled = () => {
     this.props.history.goBack();
-  }
+  };
 
   checkoutContinued = () => {
     this.props.history.replace('/checkout/contact-data');
-  }
+  };
 
   render () {
     return (
@@ -44,7 +44,7 @@ class Checkout extends Component {
           checkoutContinued={this.checkoutContinued} />
           <Route
             path={this.props.match.path + '/contact-data'}
-            render={(props) => (<ContactData ingredients={this.state.ingredients} price={this.state.price} />)} />
+            render={(props) => (<ContactData ingredients={this.state.ingredients} price={this.state.price} {...props} />)} />
       </div>
     )
   }
