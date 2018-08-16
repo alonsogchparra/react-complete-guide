@@ -42,6 +42,7 @@ const input = (props) => {
       </select>
       );
       break;
+  
     default:
       inputElement = <input
         className={inputClasses.join(' ')}
@@ -58,7 +59,6 @@ const input = (props) => {
       {inputElement}
     </div>
   );
-
 };
 
 export default input;
