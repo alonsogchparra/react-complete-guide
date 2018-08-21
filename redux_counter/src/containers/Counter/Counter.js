@@ -10,7 +10,7 @@ import './Counter.css';
 class Counter extends Component {
   render () {
     return (
-      <div>
+      <div className="Counter">
         <CounterOutput value={this.props.counter} />
         <CounterControl label="Increment" clicked={this.props.onIncrementCounter} />
         <CounterControl label="Decrement" clicked={this.props.onDecrementCounter} />
