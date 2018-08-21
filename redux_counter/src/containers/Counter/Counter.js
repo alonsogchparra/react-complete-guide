@@ -9,12 +9,11 @@ class Counter extends Component {
   render () {
     return (
       <div>
-        Counter
         <CounterOutput />
-        <CounterControl />
-        <CounterControl />
-        <CounterControl />
-        <CounterControl />
+        <CounterControl label="Increment" />
+        <CounterControl label="Decrement" />
+        <CounterControl label="Add 10" />
+        <CounterControl label="Subtract 15" />
       </div>
     );
   }
