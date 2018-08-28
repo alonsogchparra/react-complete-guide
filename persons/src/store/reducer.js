@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
       };
       return {
         ...state,
-        persons: newPerson
+        persons: state.persons.concat( newPerson )
       }
 
     case actionTypes.REMOVE_PERSON:
