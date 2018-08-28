@@ -2,8 +2,8 @@ import React from 'react';
 
 const person = (props) => (
   <div>
-    <h1>Name</h1>
-    <p>Age:</p>
+    <h1>{props.name}</h1>
+    <p>Age: {props.age}</p>
   </div>
 );
 
