@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+import './AddPerson.css';
 
 class AddPerson extends Component {
 
@@ -17,13 +19,14 @@ class AddPerson extends Component {
 
   render () {
     return (
-      <div>
+      <div className="AddPerson">
+        <label>Name:</label>
         <input
           type="text"
           placeholder="Name"
           onChange={this.onChangeNameHandler}
           value={this.state.name} />
-
+        <label>Age:</label>
         <input
           type="number"
           placeholder="Age"
