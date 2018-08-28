@@ -7,11 +7,11 @@ class AddPerson extends Component {
     age: ''
   };
 
-  onNameChangeHandler = (event) => {
+  onChangeNameHandler = (event) => {
     this.setState({ name: event.target.value });
   }
 
-  onAgeChangeHandler = (event) => {
+  onChangeAgeHandler = (event) => {
     this.setState({ age: event.target.value });
   }
 
@@ -21,17 +21,19 @@ class AddPerson extends Component {
         <input
           type="text"
           placeholder="Name"
-          onChange={this.onNameChangeHandler}
-           />
+          onChange={this.onChangeNameHandler}
+          value={this.state.name} />
+
         <input
           type="number"
           placeholder="Age"
-          onChange={this.onAgeChangeHandler}
-           />
-        <button>Add Person</button>
+          onChange={this.onChangeAgeHandler}
+          value={this.state.age} />
+
+        <button onClick={() => this.props.personAdded(this.state.name, this.state.age)}>Add Person</button>
       </div>
     )
   }
 }
 
-export default AddPerson
+export default AddPerson;
