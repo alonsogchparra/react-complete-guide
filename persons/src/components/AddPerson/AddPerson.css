@@ -1,0 +1,38 @@
+.AddPerson {
+  display: flex;
+  flex-flow: column;
+  box-sizing: border-box;
+  width: 50%;
+  margin: 10px auto;
+  justify-content: center;
+}
+
+.AddPerson label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.AddPerson input {
+  padding: 10px;
+  font-size: 1rem;
+  margin: 20px auto;
+  width: 80%;
+}
+
+.AddPerson button {
+  padding: 20px;
+  margin: 10px auto;
+  width: 50%;
+  background-color: rgb(0, 118, 253);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  box-shadow: 0 2px 2px #ccc;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.AddPerson button:hover {
+  background-color: rgb(0, 60, 128);
+}

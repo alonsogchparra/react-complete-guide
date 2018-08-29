@@ -1,0 +1,14 @@
+.Person {
+  width: 80%;
+  margin: 10px auto;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.Person:hover {
+  background-color: #eee;
+}
