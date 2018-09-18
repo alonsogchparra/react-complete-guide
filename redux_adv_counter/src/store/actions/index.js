@@ -1,6 +1,8 @@
 export {
   increment,
-  decrement
+  decrement,
+  add,
+  subtract
 } from './counter';
 
 export {
