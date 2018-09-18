@@ -11,3 +11,17 @@ export const decrement = () => {
     type: actionTypes.DECREMENT
   }
 };
+
+export const add = (val) => {
+  return {
+    type: actionTypes.ADD,
+    value: val
+  }
+};
+
+export const subtract = (val) => {
+  return {
+    type: actionTypes.SUBTRACT,
+    value: val
+  }
+};
