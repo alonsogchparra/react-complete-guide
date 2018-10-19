@@ -10,23 +10,22 @@ const initialState = {
 };
 
 const authStart = (state, action) => {
-  return updateObject ( state, { error: null, loading: true });
+  return updateObject( state, { error: null, loading: true });
 };
 
 const authSuccess = (state, action) => {
-  return updateObject (state, {
+  return updateObject(state, {
     token: action.idToken,
     userId: action.userId,
-    error:null,
+    error: null,
     loading: false
   });
-}
+};
 
 const authFail = (state, action) => {
-  return updateObject (state, { 
+  return updateObject(state, { 
     error: action.error, 
-    loading: false
-  });
+    loading: false });
 };
 
 const authLogout = (state, action) => {
@@ -34,11 +33,11 @@ const authLogout = (state, action) => {
 };
 
 const setAuthRedirectPath = (state, action) => {
-  return updateObject (state, { authRedirectPath: action.path });
-}
+  return updateObject(state, { authRedirectPath: action.path });
+};
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
+  switch(action.type) {
 
     case actionTypes.AUTH_START:
       return authStart(state, action);
@@ -58,6 +57,6 @@ const reducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default reducer;
