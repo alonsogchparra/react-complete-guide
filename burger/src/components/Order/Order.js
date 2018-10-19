@@ -26,14 +26,14 @@ const order = (props) => {
                 }
               }
               key={ig.name}>{ig.name} ({ig.amount})</span>;
-  })
+  });
 
   return (
     <div className={classes.Order}>
       <p>Ingredients: {ingredientOutput}</p>
       {/* If we don't turn the string a number with +, this is another way to turning it */}
-      {/*<p>Price: <strong>USD {Number.parseFloat(props.price).toFixed(2)}</strong></p>*/}
-      <p>Price: <strong>USD {props.price.toFixed(2)}</strong></p>
+      <p>Price: <strong>USD {Number.parseFloat(props.price).toFixed(2)}</strong></p>
+      { /*<p>Price: <strong>USD {props.price.toFixed(2)}</strong></p>*/ }
     </div>
   );
 };

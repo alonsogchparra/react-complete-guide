@@ -7,11 +7,11 @@ import ContactData from './ContactData/ContactData';
 
 class Checkout extends Component {
 
-  checkoutCancelled = () => {
+  checkoutCancelledHandler = () => {
     this.props.history.goBack();
   };
 
-  checkoutContinued = () => {
+  checkoutContinuedHandler = () => {
     this.props.history.replace('/checkout/contact-data');
   };
 
@@ -26,8 +26,8 @@ class Checkout extends Component {
         {purchasedRedirect}
           <CheckoutSummary
             ingredients={this.props.ingredients}
-            checkoutCancelled={this.checkoutCancelled}
-            checkoutContinued={this.checkoutContinued} />
+            checkoutCancelled={this.checkoutCancelledHandler}
+            checkoutContinued={this.checkoutContinuedHandler} />
             <Route
               path={this.props.match.path + '/contact-data'}
               component={ContactData} />
@@ -36,7 +36,6 @@ class Checkout extends Component {
     }
 
     return summary;
-
   }
 }
 
@@ -44,7 +43,7 @@ const mapStateToProps = state => {
   return {
     ingredients: state.burgerBuilder.ingredients,
     purchased: state.order.purchased
-  }
+  };
 };
 
 export default connect(mapStateToProps)(Checkout);
