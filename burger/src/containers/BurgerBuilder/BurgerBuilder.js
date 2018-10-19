@@ -67,9 +67,8 @@ class BurgerBuilder extends Component {
       disabledInfo[key] = disabledInfo[key] <= 0
     }
 
-    // {salad: true, meat: false, ... }
     let orderSummary = null;
-    let burger = this.props.error ? <p>Ingredients can't be loaded</p> : <Spinner />;
+    let burger = this.props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
 
     if (this.props.ingredients) {
       burger = (
@@ -91,6 +90,8 @@ class BurgerBuilder extends Component {
         purchaseCancelled={this.purchaseCancelHandler}
         purchaseContinued={this.purchaseContinueHandler} />;
     }
+
+    // {salad: true, meat: false, ... }
 
     return (
       <Aux>
@@ -119,7 +120,7 @@ const mapDispatchToProps = dispatch => {
     onIngrendientsInit: () => dispatch (actions.initIngredients()),
     onPurchaseInit: () => dispatch (actions.purchaseInit()),
     onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
