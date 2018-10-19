@@ -97,14 +97,16 @@ class Auth extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.onAuth(this.state.controls.email, this.state.controls.password, this.state.controls.isSignup);
+    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
   }
 
   switchAuthModeHandler = () => {
     this.setState(prevState => {
-      return { isSignup: !prevState.isSignup };
+      return {
+        isSignup: !prevState.isSignup
+      };
     });
-  }
+  };
 
   render () {
 
@@ -126,8 +128,7 @@ class Auth extends Component {
         invalid={!formElement.config.valid}
         shouldValidate={formElement.config.validation}
         touched={formElement.config.touched}
-        changed={(event) => this.inputChangedHandler(event, formElement.id )}
-         />
+        changed={(event) => this.inputChangedHandler(event, formElement.id )} />
     ));
 
     if (this.props.loading) {
@@ -137,28 +138,39 @@ class Auth extends Component {
     let errorMessage = null;
 
     if (this.props.error) {
-      errorMessage = (
-        <p>{this.props.error.message}</p>
-      );
+      if (this.props.error.message === 'EMAIL_EXISTS') {
+        errorMessage = (
+          <p>The email already exists.</p>
+        );
+      }
+
+      if (this.props.error.message === 'INVALID_PASSWORD') {
+        errorMessage = (
+          <p>Password Incorrect.</p>
+        );
+      }
     }
 
     let authRedirect = null;
+
     if (this.props.isAuthenticated) {
-      authRedirect = <Redirect to={this.props.authRedirectPath} />
+      authRedirect = <Redirect to={this.props.authRedirectPath} />;
     }
+
+    
     return (
       <div className={classes.Auth}>
         {authRedirect}
         {errorMessage}
-        <from>
+        <form onSubmit={this.submitHandler}>
           {form}
-          <Button btnType="Success"></Button>
-        </from>
+          <Button btnType="Success">SUBMIT</Button>
+        </form>
         <Button
           clicked={this.switchAuthModeHandler}
           btnType="Danger">SWITCH TO {this.state.isSignup ? 'SIGNIN' : 'SIGNUP' }</Button>
       </div>
-    )
+    );
   }
 }
 
@@ -167,7 +179,7 @@ const mapStateToProps = state => {
     error: state.auth.error,
     loading: state.auth.loading,
     isAuthenticated: state.auth.token !== null,
-    buildingBurger: state.buildingBurger.building,
+    buildingBurger: state.burgerBuilder.building,
     authRedirectPath: state.auth.authRedirectPath
   };
 };
