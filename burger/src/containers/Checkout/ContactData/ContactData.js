@@ -147,7 +147,6 @@ class ContactData extends Component {
       isValid = pattern.test(value) && isValid;
     }
 
-
     return isValid;
   }
 
@@ -174,6 +173,7 @@ class ContactData extends Component {
 
     console.log(formIsValid);
     this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid });
+    
   }
 
   render () {
@@ -229,8 +229,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderBurger: (orderData) => dispatch (actions.purchaseBurger(orderData))
-  }
-}
+    onOrderBurger: (orderData, token) => dispatch (actions.purchaseBurger(orderData, token))
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));
