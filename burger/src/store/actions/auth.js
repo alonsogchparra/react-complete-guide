@@ -23,7 +23,7 @@ export const authFail = (error) => {
 };
 
 export const logout = () => {
-  localStorage.removeItem('idToken');
+  localStorage.removeItem('token');
   localStorage.removeItem('expirationDate');
   localStorage.removeItem('userId');
   return {
@@ -31,13 +31,13 @@ export const logout = () => {
   };
 };
 
-export const checkoutAuthTimeout = (expirationTime) => {
+export const checkAuthTimeout = (expirationTime) => {
   return dispatch => {
     setTimeout(() => {
       dispatch(logout());
-    }, expirationTime * 1000)
-  }
-}
+    }, expirationTime * 1000);
+  };
+};
 
 export const auth = (email, password, isSignup) => {
   return dispatch => {
@@ -45,25 +45,29 @@ export const auth = (email, password, isSignup) => {
     const authData = {
       email: email,
       password: password,
-      retrunSecureToken: true
+      returnSecureToken: true
     };
+    
     let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyDlG-iXANw8rBdnp5DZkD_wc0aqkVxlhnE';
+
     if (!isSignup) {
       url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyDlG-iXANw8rBdnp5DZkD_wc0aqkVxlhnE';
     }
+
     axios.post(url, authData)
       .then(response => {
         console.log(response);
-        const expirationDate = new Date(new Date().getTime + response.data.expiresIn * 1000);
+        const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
         localStorage.setItem('token', response.data.idToken);
         localStorage.setItem('expirationDate', expirationDate);
         localStorage.setItem('userId', response.data.localId);
         dispatch(authSuccess(response.data.idToken, response.data.localId));
-        dispatch(checkoutAuthTimeout(response.data.expiresIn));
+        dispatch(checkAuthTimeout(response.data.expiresIn));
       })
-      .catch(err => {
-        dispatch(authFail(err.response.data.error));
-      });
+      .catch(error => {
+        console.log(error);
+        dispatch(authFail(error.response.data.error));
+      })
   };
 };
 
@@ -86,8 +90,8 @@ export const authCheckState = () => {
       } else {
         const userId = localStorage.getItem('userId');
         dispatch(authSuccess(token, userId));
-        dispatch(checkoutAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000 ));
+        dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000 ));
       }
     }
-  }
-}
+  };
+};
