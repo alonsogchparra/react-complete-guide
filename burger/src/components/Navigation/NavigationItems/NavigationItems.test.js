@@ -19,4 +19,10 @@ describe('<NavigationItems />', () => {
   it('should render two <NavigationItem /> elements if is not authenticated', () => {
     expect(wrapper.find(NavigationItem)).toHaveLength(2);
   });
+
+  it('should render three <NavigationItem /> elements if is authenticated', () => {
+    // wrapper = shallow(<NavigationItems isAuthenticated />);
+    wrapper.setProps({ isAuthenticated: true });
+    expect(wrapper.find(NavigationItem)).toHaveLength(3);
+  });
 });
