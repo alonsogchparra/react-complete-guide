@@ -2,6 +2,11 @@
   "name": "nextjs",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
   "license": "MIT",
   "dependencies": {
     "next": "^7.0.2",
