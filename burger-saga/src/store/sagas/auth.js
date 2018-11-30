@@ -30,7 +30,7 @@ export function* authUserSaga(action) {
       url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyDlG-iXANw8rBdnp5DZkD_wc0aqkVxlhnE';
     }
     try {
-      const response = axios.post(url, authData)
+      const response = yield axios.post(url, authData)
       
       const expirationDate = yield new Date(new Date().getTime() + response.data.expiresIn * 1000);
       yield localStorage.setItem('token', response.data.idToken);
@@ -53,7 +53,7 @@ export function* authCheckStateSaga(action) {
       if (expirationDate <= new Date()) {
         yield put(actions.logout());
       } else {
-        const userId = localStorage.getItem('userId');
+        const userId = yield localStorage.getItem('userId');
         yield put(actions.authSuccess(token, userId));
         yield put(actions.checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000 ));
       }
