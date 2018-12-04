@@ -21,6 +21,21 @@
   border-radius: 20px;
 }
 
+.bacon {
+  background: linear-gradient(#bf3813, #c45e38);
+  width: 80%;
+  height: 3%;
+  margin: 2% auto;
+}
+
+.cheese {
+  background: linear-gradient(#f4d004, #d6bb22);
+  width: 91%;
+  height: 4.5%;
+  margin: 2% auto;
+  border-radius: 20px;
+}
+
 .bread-bottom {
   background: linear-gradient(#f08e4a, #e27b36);
   width: 80%;
