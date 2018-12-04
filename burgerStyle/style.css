@@ -1,0 +1,14 @@
+.box {
+  width: 500px;
+  height: 450px;
+  margin: auto;
+}
+
+.bread-top {
+  background: linear-gradient(#bc581e, #e27b36);
+  width: 80%;
+  height: 20%;
+  margin: 2% auto;
+  border-radius: 50% 50% 0 0;
+  box-shadow: inset -15px 0 #c15711;
+}
